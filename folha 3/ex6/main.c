@@ -10,11 +10,13 @@ int main(void) {
 
     /* Makes sure the number is within the valid range. */
     if(num > 999 || num < 0) {
-        printf("Invalid number!");
+        printf("Invalid number!\n");
     
     } else {
         decompose(num);
     }
+
+    return 0;
 }
 
 
