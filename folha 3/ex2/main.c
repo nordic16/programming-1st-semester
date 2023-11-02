@@ -21,6 +21,8 @@ int main(void) {
 
     /* output formatting: prints result with only 4 decimal places. */
     printf("Resultado: %.4f\n", expr(x1, x2, y1, y2));
+
+    return 0;
 }
 
 /* returning a double here would be overkill: float's precision is enough. */
