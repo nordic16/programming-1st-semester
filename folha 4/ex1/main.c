@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #define DIMENSAO 9
 
-
 void alinea_a(int*); 
 void printArray(int*, size_t); /* para tornar o código menos repetitivo. */
 void alinea_c(int*, size_t);
@@ -25,6 +24,9 @@ int main(void) {
     alinea_c(values, len);
 
     /* verificação */
+    /* Para demonstração, o código abaixo utiliza o mesmo array usado nas alíneas anteriores. 
+     * Caso seja necessário, crie um novo.
+     */
     printArray(values, len);
     printf("################################\n");   
     printf("Valor mínimo: %d\n", alinea_j(values, len));
@@ -36,23 +38,19 @@ int main(void) {
     scanf("%d", &val);
     printf("Ultima ocorrencia de %d: %d\n", val, alinea_m(values, DIMENSAO, val));
 
-    /* Verificação */
-    printArray(values, DIMENSAO);
-
     return 0;
 }
 
 
-void alinea_a(int* vals) {
+void alinea_a(int vals[]) {
     int i;
     for(i = 0; i < DIMENSAO; i++) {
-        *vals = (i + 1) * (i + 1);
-        vals++;
+        vals[i] = (i + 1) * (i + 1);
     }
 }
 
 
-void alinea_c(int* vals, size_t len) {
+void alinea_c(int vals[], size_t len) {
     if(len > DIMENSAO) {
         printf("Tamanho superior a %d!\n", DIMENSAO);
         exit(-1); /* -1 indica um erro. */
@@ -60,51 +58,43 @@ void alinea_c(int* vals, size_t len) {
 
     int i;
     for(i = 0; i < len; i++) {
-        /* Parentesis necessários, visto que ++ precede *. */
-        (*vals)++;
-        vals++;
-  }
+        vals[i]++;
+    }
 }
 
 
 /* Alinea e (pelos vistos) */
-void printArray(int* array, size_t len) {
+void printArray(int array[], size_t len) {
     int i = 0;
     for(i = 0; i < len; i++) {
-        /* Pós incremento usado para avançar para o próximo elemento do array. */
-        printf("(%d) - %d\n", i, *(array++));
+        printf("(%d) - %d\n", i, array[i]);
     }
 }
 
 
-int alinea_j(int* vals, size_t len) {
-    int min = *vals;
-    vals++; /* Como assumimos que min = vals[0], não é necessário iterar sobre a posição 0. */
+int alinea_j(int vals[], size_t len) {
+    int min = vals[0];
     
+    /* Como assumimos que min = vals[0], não é necessário iterar sobre a posição 0. */
     int i;
     for(i = 1; i < len; i++) {
-        if(*vals < min) {
-            min = *vals;
+        if(vals[i] < min) {
+            min = vals[i];
         }
-        vals++;
     }
-
     return min;
 }
 
 
-int alinea_m(int* values, size_t len, int val) {
+int alinea_m(int values[], size_t len, int val) {
     int max = -1; /* Valor default */
     int i;
 
     for(i = 0; i < len; i++) {
-        if(*values == val) {
+        if(values[i] == val) {
             max = i;
         }
-
-        values++;
     }
-
     return max;
 }
 
