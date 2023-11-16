@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #define DIMENSAO 9
 
-void alinea_a(int*); 
-void printArray(int*, size_t); /* para tornar o código menos repetitivo. */
-void alinea_c(int*, size_t);
-int alinea_j(int*, size_t);
-int alinea_m(int*, size_t, int);
+void alinea_a(int[]); 
+void printArray(int[], size_t); /* para tornar o código menos repetitivo. */
+void alinea_c(int[], size_t);
+int alinea_j(int[], size_t);
+int alinea_m(int[], size_t, int);
 
 int main(void) {
     size_t len;
