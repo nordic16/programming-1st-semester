@@ -27,8 +27,6 @@ void max_and_pos(const int arr[], int size, int* ptrMax, int* ptrMaxPos) {
             *ptrMaxPos = i + 1; /* i + 1 for pos, i for index. */
         }
     }
-  
-
 }
 
 
